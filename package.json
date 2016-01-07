@@ -9,12 +9,12 @@
       "email": "steve@mydev.co"
     }
   ],
-  "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-release-steps": "~0.3.7",
     "nodeunit": "^0.9.1",
+    "semver": "^5.1.0",
     "sinon": "^1.15.4"
   },
   "keywords": [

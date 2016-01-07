@@ -1,24 +1,18 @@
+var semver = require('semver');
+
 module.exports = TagList;
 
 function TagList(tagList) {
-  this.latest = tagList.length && tagList[tagList.length - 1];
+  this.latest = tagList ? tagList[tagList.length - 1] : null;
   this.all = tagList
 }
 
 TagList.parse = function (tags) {
-  return new TagList(tags.split('\n').map(function (item) {
-    return item.trim();
-  }).sort(function (tagA, tagB) {
-    var partsA = tagA.split('.');
-    var partsB = tagB.split('.');
-
-    for (var i = 0, l = Math.max(partsA.length, partsB.length); i < l; i++) {
-      var diff = partsA[i] - partsB[i];
-      if (diff) {
-        return diff > 0 ? 1 : -1;
-      }
-    }
-
-    return 0;
-  }));
+  if (tags.length) {
+    return new TagList(tags.split('\n').filter(function (tag) {
+      return tag.length;
+    }).sort(semver.compare));
+  } else {
+    return new TagList(null);
+  }
 };
