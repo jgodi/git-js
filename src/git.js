@@ -814,7 +814,7 @@
 
     return {
       current: current,
-      branches: branches
+      all: branches
     };
   };
 

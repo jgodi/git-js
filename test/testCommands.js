@@ -629,7 +629,7 @@ exports.getBranchList = {
       test.equals(null, err, 'not an error');
       test.same(["branch"], theCommandRun());
       test.equals('master', result.current);
-      test.same(['master', 'test', 'new'], result.branches);
+      test.same(['master', 'test', 'new'], result.all);
       test.done();
     });
 
